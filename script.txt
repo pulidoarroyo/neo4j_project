@@ -1,0 +1,45 @@
+// Nivel 1: Abuelos
+CREATE (abuelo1:Hombre {nombre: 'Daniel', edad: 85, actividad: 'Veterinario', gusto1: 'Leer', gusto2: 'Perros', disgusto: 'Gatos'});
+CREATE (abuela1:Mujer {nombre: 'Hilda', edad: 80, actividad: 'Profesora', gusto1: 'Viajar', gusto2: 'Música', disgusto: 'Naturaleza'});
+CREATE (abuelo2:Hombre {nombre: 'Alejandro', edad: 83, actividad: 'Militar', gusto1: 'Autos', gusto2: 'Películas', disgusto: 'Futbol'});
+CREATE (abuela2:Mujer {nombre: 'Natalia', edad: 78, actividad: 'Abogado', gusto1: 'Moda', gusto2: 'Motos', disgusto: 'Naturaleza'});
+
+// Nivel 2: Padres y Tíos
+CREATE (padre:Hombre {nombre: 'Bonerges', edad: 49, actividad: 'Ingeniero', gusto1: 'Futbol', gusto2: 'Tecnologías', disgusto: 'Gatos'});
+CREATE (madre:Mujer {nombre: 'Hilda', edad: 56, actividad: 'Ingeniero', gusto1: 'Leer', gusto2: 'Viajar', disgusto: 'Motos'});
+CREATE (tio1:Hombre {nombre: 'Pedro', edad: 55, actividad: 'Médico', gusto1: 'Leer', gusto2: 'Películas', disgusto: 'Naturaleza'});
+CREATE (tia1:Mujer {nombre: 'Sofía', edad: 53, actividad: 'Psicólogo', gusto1: 'Moda', gusto2: 'Música', disgusto: 'Motos'});
+CREATE (tio2:Hombre {nombre: 'José', edad: 50, actividad: 'Ingeniero', gusto1: 'Futbol', gusto2: 'Tecnologías', disgusto: 'Perros'});
+
+// Nivel 3: Hermanos y Primos
+CREATE (hermana:Mujer {nombre: 'Aurora', edad: 21, actividad: 'Estudiante', gusto1: 'Música', gusto2: 'Películas', disgusto: 'Futbol'});
+CREATE (yo:Hombre {nombre: 'Alejandro', edad: 20, actividad: 'Estudiante', gusto1: 'Tecnologías', gusto2: 'Leer', disgusto: 'Naturaleza'});
+CREATE (prima1:Mujer {nombre: 'Julia', edad: 22, actividad: 'Estudiante', gusto1: 'Moda', gusto2: 'Viajar', disgusto: 'Gatos'});
+CREATE (primo1:Hombre {nombre: 'Carlos', edad: 25, actividad: 'Médico', gusto1: 'Leer', gusto2: 'Motos', disgusto: 'Futbol'});
+CREATE (prima2:Mujer {nombre: 'Elena', edad: 18, actividad: 'Estudiante', gusto1: 'Películas', gusto2: 'Tecnologías', disgusto: 'Naturaleza'});
+
+// Relaciones de matrimonio
+CREATE (abuelo1)-[:CASADO_CON {fecha_ini: '1960-06-15'}]->(abuela1);
+CREATE (abuelo2)-[:CASADO_CON {fecha_ini: '1965-06-15'}]->(abuela2);
+CREATE (padre)-[:CASADO_CON {fecha_ini: '1995-08-20'}]->(madre);
+CREATE (tio1)-[:CASADO_CON {fecha_ini: '1988-03-10'}]->(tia1);
+
+// Relaciones de padres a hijos con fechas ajustadas según edad
+CREATE (abuelo1)-[:PADRE_DE {fecha_ini: '1970-03-25'}]->(padre);
+CREATE (abuela1)-[:MADRE_DE {fecha_ini: '1970-03-25'}]->(padre);
+CREATE (abuelo1)-[:PADRE_DE {fecha_ini: '1973-05-10'}]->(tio1);
+CREATE (abuela1)-[:MADRE_DE {fecha_ini: '1973-05-10'}]->(tio1);
+CREATE (abuelo2)-[:PADRE_DE {fecha_ini: '1975-07-15'}]->(tia1);
+CREATE (abuela2)-[:MADRE_DE {fecha_ini: '1975-07-15'}]->(tia1);
+CREATE (abuelo2)-[:PADRE_DE {fecha_ini: '1977-09-20'}]->(tio2);
+CREATE (abuela2)-[:MADRE_DE {fecha_ini: '1977-09-20'}]->(tio2);
+CREATE (padre)-[:PADRE_DE {fecha_ini: '2003-02-28'}]->(hermana);
+CREATE (madre)-[:MADRE_DE {fecha_ini: '2003-02-28'}]->(hermana);
+CREATE (padre)-[:PADRE_DE {fecha_ini: '2004-05-24'}]->(yo);
+CREATE (madre)-[:MADRE_DE {fecha_ini: '2004-05-24'}]->(yo);
+CREATE (tio1)-[:PADRE_DE {fecha_ini: '1995-10-05'}]->(primo1);
+CREATE (tia1)-[:MADRE_DE {fecha_ini: '1995-10-05'}]->(primo1);
+CREATE (tio2)-[:PADRE_DE {fecha_ini: '1998-12-25'}]->(prima1);
+CREATE (tia1)-[:MADRE_DE {fecha_ini: '1998-12-25'}]->(prima1);
+CREATE (tio2)-[:PADRE_DE {fecha_ini: '2002-02-15'}]->(prima2);
+CREATE (tia1)-[:MADRE_DE {fecha_ini: '2002-02-15'}]->(prima2);
