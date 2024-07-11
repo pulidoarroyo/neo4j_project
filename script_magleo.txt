@@ -19,90 +19,95 @@ CREATE (primo:Hombre {nombre: 'Cristofer', edad: 25, actividad: 'Estudiante', gu
 CREATE (hijo:Hombre {nombre: 'Magleo', edad: 21, actividad: 'Estudiante', gusto1: 'Peliculas', gusto2: 'Motos', disgusto: 'Naturaleza'});
 CREATE (tia3:Mujer {nombre: 'Josy', edad: 50, actividad: 'Ingeniera', gusto1: 'Voleibol', gusto2: 'Moda', disgusto: 'Gatos'});
 
-// Relaciones de matrimonio
+// Relación de matrimonio
 MATCH (a:Hombre {nombre: 'Leonardo'}), (b:Mujer {nombre: 'Nellys'})
-CREATE (a)-[:CASADO_CON]->(b);
+CREATE (a)-[:CASADO_CON {fecha_ini:'1960-06-05'}]->(b)
 
 MATCH (a:Hombre {nombre: 'Manuel'}), (b:Mujer {nombre: 'Gleixi'})
-CREATE (a)-[:CASADO_CON]->(b);
+CREATE (a)-[:CASADO_CON {fecha_ini:'2000-12-03'}]->(b)
 
 MATCH (a:Hombre {nombre: 'LeonardoJr'}), (b:Mujer {nombre: 'Josy'})
-CREATE (a)-[:CASADO_CON]->(b);
+CREATE (a)-[:CASADO_CON {fecha_ini:'1998-05-13'}]->(b)
 
-// Relaciones de hermanos
+// Relación de hermanos
 MATCH (a:Hombre {nombre: 'Leonardo'}), (b:Hombre {nombre: 'Wilfrido'})
-CREATE (a)-[:HERMANO_DE]->(b);
+CREATE (a)-[:HERMANO_DE]->(b)
 
 MATCH (a:Hombre {nombre: 'Leonardo'}), (b:Hombre {nombre: 'Gilberto'})
-CREATE (a)-[:HERMANO_DE]->(b);
+CREATE (a)-[:HERMANO_DE]->(b)
 
 MATCH (a:Hombre {nombre: 'Leonardo'}), (b:Mujer {nombre: 'Marilyn'})
-CREATE (a)-[:HERMANO_DE]->(b);
+CREATE (a)-[:HERMANO_DE]->(b)
 
 MATCH (a:Mujer {nombre: 'Nellys'}), (b:Mujer {nombre: 'Xiomara'})
-CREATE (a)-[:HERMANA_DE]->(b);
+CREATE (a)-[:HERMANA_DE]->(b)
 
 MATCH (a:Mujer {nombre: 'Nellys'}), (b:Mujer {nombre: 'Arelys'})
-CREATE (a)-[:HERMANA_DE]->(b);
+CREATE (a)-[:HERMANA_DE]->(b)
 
 MATCH (a:Hombre {nombre: 'Manuel'}), (b:Mujer {nombre: 'Diageidys'})
-CREATE (a)-[:HERMANO_DE]->(b);
+CREATE (a)-[:HERMANO_DE]->(b)
 
-// Relaciones de padres e hijos
+// Relación de padres e hijos
 MATCH (a:Hombre {nombre: 'Leonardo'}), (b:Mujer {nombre: 'Nellys'}), (c:Hombre {nombre: 'LeonardoJr'})
-CREATE (a)-[:PADRE_DE]->(c), (b)-[:MADRE_DE]->(c);
+CREATE (a)-[:PADRE_DE {fecha_ini:'1976-01-03'}]->(c), (b)-[:MADRE_DE {fecha_ini:'1976-01-03'}]->(c)
 
 MATCH (a:Hombre {nombre: 'Leonardo'}), (b:Mujer {nombre: 'Nellys'}), (c:Mujer {nombre: 'Leonelida'})
-CREATE (a)-[:PADRE_DE]->(c), (b)-[:MADRE_DE]->(c);
+CREATE (a)-[:PADRE_DE {fecha_ini:'1972-07-14'}]->(c), (b)-[:MADRE_DE {fecha_ini:'1972-07-14'}]->(c)
 
 MATCH (a:Hombre {nombre: 'Leonardo'}), (b:Mujer {nombre: 'Nellys'}), (c:Mujer {nombre: 'Gleixi'})
-CREATE (a)-[:PADRE_DE]->(c), (b)-[:MADRE_DE]->(c);
+CREATE (a)-[:PADRE_DE {fecha_ini:'1974-01-18'}]->(c), (b)-[:MADRE_DE {fecha_ini:'1974-01-18'}]->(c)
 
 MATCH (a:Mujer {nombre: 'Josy'}), (b:Hombre {nombre: 'LeonardoJr'}), (c:Mujer {nombre: 'Sarai'})
-CREATE (a)-[:MADRE_DE]->(c), (b)-[:PADRE_DE]->(c);
+CREATE (a)-[:MADRE_DE {fecha_ini:'2004-06-28'}]->(c), (b)-[:PADRE_DE {fecha_ini:'2004-06-28'}]->(c)
 
 MATCH (a:Mujer {nombre: 'Josy'}), (b:Hombre {nombre: 'LeonardoJr'}), (c:Mujer {nombre: 'Vanessa'})
-CREATE (a)-[:MADRE_DE]->(c), (b)-[:PADRE_DE]->(c);
+CREATE (a)-[:MADRE_DE {fecha_ini:'2010-08-20'}]->(c), (b)-[:PADRE_DE {fecha_ini:'2010-08-20'}]->(c)
 
 MATCH (a:Mujer {nombre: 'Josy'}), (b:Hombre {nombre: 'LeonardoJr'}), (c:Mujer {nombre: 'Valeria'})
-CREATE (a)-[:MADRE_DE]->(c), (b)-[:PADRE_DE]->(c);
+CREATE (a)-[:MADRE_DE {fecha_ini:'2008-04-10'}]->(c), (b)-[:PADRE_DE {fecha_ini:'2008-04-10'}]->(c)
 
 MATCH (a:Mujer {nombre: 'Diageidys'}), (b:Mujer {nombre: 'Elizabeth'})
-CREATE (a)-[:MADRE_DE]->(b);
+CREATE (a)-[:MADRE_DE {fecha_ini:'2000-10-30'}]->(b)
 
 MATCH (a:Mujer {nombre: 'Diageidys'}), (b:Mujer {nombre: 'Maria'})
-CREATE (a)-[:MADRE_DE]->(b);
+CREATE (a)-[:MADRE_DE {fecha_ini:'2004-03-10'}]->(b)
 
 MATCH (a:Mujer {nombre: 'Diageidys'}), (b:Hombre {nombre: 'Cristofer'})
-CREATE (a)-[:MADRE_DE]->(b);
+CREATE (a)-[:MADRE_DE {fecha_ini:'1998-05-15'}]->(b)
 
 MATCH (a:Hombre {nombre: 'Manuel'}), (b:Mujer {nombre: 'Gleixi'}), (c:Hombre {nombre: 'Magleo'})
-CREATE (a)-[:PADRE_DE]->(c), (b)-[:MADRE_DE]->(c);
+CREATE (a)-[:PADRE_DE {fecha_ini:'2003-05-13'}]->(c), (b)-[:MADRE_DE {fecha_ini:'2003-05-13'}]->(c)
 
-// Relaciones de primos
+// Relación de primos
 MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Elizabeth'})
-CREATE (a)-[:PRIMO_DE]->(b);
+CREATE (a)-[:PRIMO_DE]->(b)
 
 MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Maria'})
-CREATE (a)-[:PRIMO_DE]->(b);
+CREATE (a)-[:PRIMO_DE]->(b)
 
 MATCH (a:Hombre {nombre: 'Magleo'}), (b:Hombre {nombre: 'Cristofer'})
-CREATE (a)-[:PRIMO_DE]->(b);
+CREATE (a)-[:PRIMO_DE]->(b)
 
-MATCH (a:Mujer {nombre: 'Sarai'}), (b:Mujer {nombre: 'Vanessa'})
-CREATE (a)-[:PRIMA_DE]->(b);
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Sarai'})
+CREATE (a)-[:PRIMO_DE]->(b)
 
-MATCH (a:Mujer {nombre: 'Sarai'}), (b:Mujer {nombre: 'Valeria'})
-CREATE (a)-[:PRIMA_DE]->(b);
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Vanessa'})
+CREATE (a)-[:PRIMO_DE]->(b)
 
-MATCH (a:Mujer {nombre: 'Vanessa'}), (b:Mujer {nombre: 'Valeria'})
-CREATE (a)-[:PRIMA_DE]->(b);
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Valeria'})
+CREATE (a)-[:PRIMO_DE]->(b)
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Maria'})
+CREATE (a)-[:PRIMO_DE]->(b)
 
-MATCH (a:Mujer {nombre: 'Sarai'}), (b:Hombre {nombre: 'Cristofer'})
-CREATE (a)-[:PRIMA_DE]->(b);
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Hombre {nombre: 'Cristofer'})
+CREATE (a)-[:PRIMO_DE]->(b)
 
-MATCH (a:Mujer {nombre: 'Vanessa'}), (b:Hombre {nombre: 'Cristofer'})
-CREATE (a)-[:PRIMA_DE]->(b);
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Sarai'})
+CREATE (a)-[:PRIMO_DE]->(b)
 
-MATCH (a:Mujer {nombre: 'Valeria'}), (b:Hombre {nombre: 'Cristofer'})
-CREATE (a)-[:PRIMA_DE]->(b);
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Vanessa'})
+CREATE (a)-[:PRIMO_DE]->(b)
+
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Mujer {nombre: 'Valeria'})
+CREATE (a)-[:PRIMO_DE]->(b)

@@ -1,6 +1,6 @@
 // Nivel 1: Abuelos
 CREATE (abuelo1:Hombre {nombre: 'Daniel', edad: 85, actividad: 'Veterinario', gusto1: 'Leer', gusto2: 'Perros', disgusto: 'Gatos'});
-CREATE (abuela1:Mujer {nombre: 'Hilda', edad: 80, actividad: 'Profesora', gusto1: 'Viajar', gusto2: 'Música', disgusto: 'Naturaleza'});
+CREATE (abuela1:Mujer {nombre: 'Dora', edad: 80, actividad: 'Profesora', gusto1: 'Viajar', gusto2: 'Música', disgusto: 'Naturaleza'});
 CREATE (abuelo2:Hombre {nombre: 'Alejo', edad: 83, actividad: 'Militar', gusto1: 'Autos', gusto2: 'Películas', disgusto: 'Futbol'});
 CREATE (abuela2:Mujer {nombre: 'Natalia', edad: 78, actividad: 'Abogado', gusto1: 'Moda', gusto2: 'Motos', disgusto: 'Naturaleza'});
 
@@ -22,7 +22,7 @@ CREATE (prima2:Mujer {nombre: 'Elena', edad: 18, actividad: 'Estudiante', gusto1
 MATCH (abuelo1:Hombre {nombre: 'Daniel'}), (abuela1:Mujer {nombre: 'Hilda'})
 CREATE (abuelo1)-[:CASADO_CON {fecha_ini: '1960-06-15'}]->(abuela1);
 
-MATCH (abuelo2:Hombre {nombre: 'Alejandro'}), (abuela2:Mujer {nombre: 'Natalia'})
+MATCH (abuelo2:Hombre {nombre: 'Alejo'}), (abuela2:Mujer {nombre: 'Natalia'})
 CREATE (abuelo2)-[:CASADO_CON {fecha_ini: '1965-06-15'}]->(abuela2);
 
 MATCH (padre:Hombre {nombre: 'Bonerges'}), (madre:Mujer {nombre: 'Hilda'})
