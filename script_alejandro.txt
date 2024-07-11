@@ -15,7 +15,7 @@ CREATE (tio2:Hombre {nombre: 'Julian', edad: 50, actividad: 'Ingeniero', gusto1:
 CREATE (hermana:Mujer {nombre: 'Aurora', edad: 21, actividad: 'Estudiante', gusto1: 'Música', gusto2: 'Películas', disgusto: 'Futbol'});
 CREATE (hijo:Hombre {nombre: 'Alejandro', edad: 20, actividad: 'Estudiante', gusto1: 'Tecnologías', gusto2: 'Leer', disgusto: 'Naturaleza'});
 CREATE (prima1:Mujer {nombre: 'Julia', edad: 22, actividad: 'Estudiante', gusto1: 'Moda', gusto2: 'Viajar', disgusto: 'Gatos'});
-CREATE (primo1:Hombre {nombre: 'Carlos', edad: 25, actividad: 'Médico', gusto1: 'Leer', gusto2: 'Motos', disgusto: 'Futbol'});
+CREATE (primo1:Hombre {nombre: 'Fulano', edad: 25, actividad: 'Médico', gusto1: 'Leer', gusto2: 'Motos', disgusto: 'Futbol'});
 CREATE (prima2:Mujer {nombre: 'Elena', edad: 18, actividad: 'Estudiante', gusto1: 'Películas', gusto2: 'Tecnologías', disgusto: 'Naturaleza'});
 
 // Relaciones de matrimonio
@@ -74,10 +74,10 @@ CREATE (padre)-[:PADRE_DE {fecha_ini: '2004-05-24'}]->(hijo);
 MATCH (madre:Mujer {nombre: 'Hilda'}), (hijo:Hombre {nombre: 'Alejandro'})
 CREATE (madre)-[:MADRE_DE {fecha_ini: '2004-05-24'}]->(hijo);
 
-MATCH (tio1:Hombre {nombre: 'Guillermo'}), (primo1:Hombre {nombre: 'Carlos'})
+MATCH (tio1:Hombre {nombre: 'Guillermo'}), (primo1:Hombre {nombre: ''})
 CREATE (tio1)-[:PADRE_DE {fecha_ini: '1995-10-05'}]->(primo1);
 
-MATCH (tia1:Mujer {nombre: 'Sofía'}), (primo1:Hombre {nombre: 'Carlos'})
+MATCH (tia1:Mujer {nombre: 'Sofía'}), (primo1:Hombre {nombre: 'Fulano'})
 CREATE (tia1)-[:MADRE_DE {fecha_ini: '1995-10-05'}]->(primo1);
 
 MATCH (tio2:Hombre {nombre: 'Julian'}), (prima1:Mujer {nombre: 'Julia'})
@@ -96,16 +96,16 @@ CREATE (tia1)-[:MADRE_DE {fecha_ini: '2002-02-15'}]->(prima2);
 MATCH (hermana:Mujer {nombre: 'Aurora'}), (hijo:Hombre {nombre: 'Alejandro'})
 CREATE (hermana)-[:HERMANA_DE]->(hijo);
 
-MATCH (primo1:Hombre {nombre: 'Carlos'}), (prima1:Mujer {nombre: 'Julia'})
+MATCH (primo1:Hombre {nombre: 'Fulano'}), (prima1:Mujer {nombre: 'Julia'})
 CREATE (primo1)-[:HERMANO_DE]->(prima1);
 
-MATCH (primo1:Hombre {nombre: 'Carlos'}), (prima2:Mujer {nombre: 'Elena'})
+MATCH (primo1:Hombre {nombre: 'Fulano'}), (prima2:Mujer {nombre: 'Elena'})
 CREATE (primo1)-[:HERMANO_DE]->(prima2);
 
 MATCH (prima1:Mujer {nombre: 'Julia'}), (prima2:Mujer {nombre: 'Elena'})
 CREATE (prima1)-[:HERMANA_DE]->(prima2);
 
-MATCH (hermana:Mujer {nombre: 'Aurora'}), (primo1:Hombre {nombre: 'Carlos'})
+MATCH (hermana:Mujer {nombre: 'Aurora'}), (primo1:Hombre {nombre: 'Fulano'})
 CREATE (hermana)-[:PRIMA_DE]->(primo1);
 
 MATCH (hermana:Mujer {nombre: 'Aurora'}), (prima1:Mujer {nombre: 'Julia'})
@@ -114,7 +114,7 @@ CREATE (hermana)-[:PRIMA_DE]->(prima1);
 MATCH (hermana:Mujer {nombre: 'Aurora'}), (prima2:Mujer {nombre: 'Elena'})
 CREATE (hermana)-[:PRIMA_DE]->(prima2);
 
-MATCH (hijo:Hombre {nombre: 'Alejandro'}), (primo1:Hombre {nombre: 'Carlos'})
+MATCH (hijo:Hombre {nombre: 'Alejandro'}), (primo1:Hombre {nombre: 'Fulano'})
 CREATE (hijo)-[:PRIMO_DE]->(primo1);
 
 MATCH (hijo:Hombre {nombre: 'Alejandro'}), (prima1:Mujer {nombre: 'Julia'})
