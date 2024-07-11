@@ -1,0 +1,7 @@
+//CREAR AMIGO_DE MAGLEO A ALEJANDRO
+MATCH (a:Hombre {nombre: 'Magleo'}), (b:Hombre {nombre: 'Alejandro'})
+CREATE (a)-[:AMIGO_DE]->(b)
+
+//RETORNA LOS PRIMOS DEL AMIGO DE MAGLEO
+MATCH (hijo:Hombre {nombre: 'Magleo'})-[:AMIGO_DE]->(amigo)-[:PRIMO_DE]->(primo)
+RETURN amigo.nombre AS Nombre_del_amigo, primo.nombre AS Nombre_del_primo, primo.edad AS Edad_del_primo, primo.actividad AS Actividad_del_primo
