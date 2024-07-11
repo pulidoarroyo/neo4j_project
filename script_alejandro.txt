@@ -9,7 +9,7 @@ CREATE (padre:Hombre {nombre: 'Bonerges', edad: 49, actividad: 'Ingeniero', gust
 CREATE (madre:Mujer {nombre: 'Hilda', edad: 56, actividad: 'Ingeniero', gusto1: 'Leer', gusto2: 'Viajar', disgusto: 'Motos'});
 CREATE (tio1:Hombre {nombre: 'Guillermo', edad: 55, actividad: 'Médico', gusto1: 'Leer', gusto2: 'Películas', disgusto: 'Naturaleza'});
 CREATE (tia1:Mujer {nombre: 'Sofía', edad: 53, actividad: 'Psicólogo', gusto1: 'Moda', gusto2: 'Música', disgusto: 'Motos'});
-CREATE (tio2:Hombre {nombre: 'Julian', edad: 50, actividad: 'Ingeniero', gusto1: 'Futbol', gusto2: 'Tecnologías', disgusto: 'Perros'});
+CREATE (tio2:Hombre {nombre: 'Julian', edad: 50, actividad: 'Veterinario', gusto1: 'Futbol', gusto2: 'Tecnologías', disgusto: 'Gatos'});
 
 // Nivel 3: Hermanos y Primos
 CREATE (hermana:Mujer {nombre: 'Aurora', edad: 21, actividad: 'Estudiante', gusto1: 'Música', gusto2: 'Películas', disgusto: 'Futbol'});
@@ -94,7 +94,7 @@ CREATE (tia1)-[:MADRE_DE {fecha_ini: '2002-02-15'}]->(prima2);
 
 // Relaciones entre primos y hermanos
 MATCH (hermana:Mujer {nombre: 'Aurora'}), (hijo:Hombre {nombre: 'Alejandro'})
-CREATE (hermana)-[:HERMANA_DE]->(hijo);
+CREATE (hermana)-[:HERMANO_DE]->(hijo);
 
 MATCH (primo1:Hombre {nombre: 'Fulano'}), (prima1:Mujer {nombre: 'Julia'})
 CREATE (primo1)-[:HERMANO_DE]->(prima1);
@@ -103,16 +103,16 @@ MATCH (primo1:Hombre {nombre: 'Fulano'}), (prima2:Mujer {nombre: 'Elena'})
 CREATE (primo1)-[:HERMANO_DE]->(prima2);
 
 MATCH (prima1:Mujer {nombre: 'Julia'}), (prima2:Mujer {nombre: 'Elena'})
-CREATE (prima1)-[:HERMANA_DE]->(prima2);
+CREATE (prima1)-[:HERMANO_DE]->(prima2);
 
 MATCH (hermana:Mujer {nombre: 'Aurora'}), (primo1:Hombre {nombre: 'Fulano'})
-CREATE (hermana)-[:PRIMA_DE]->(primo1);
+CREATE (hermana)-[:PRIMO_DE]->(primo1);
 
 MATCH (hermana:Mujer {nombre: 'Aurora'}), (prima1:Mujer {nombre: 'Julia'})
-CREATE (hermana)-[:PRIMA_DE]->(prima1);
+CREATE (hermana)-[:PRIMO_DE]->(prima1);
 
 MATCH (hermana:Mujer {nombre: 'Aurora'}), (prima2:Mujer {nombre: 'Elena'})
-CREATE (hermana)-[:PRIMA_DE]->(prima2);
+CREATE (hermana)-[:PRIMO_DE]->(prima2);
 
 MATCH (hijo:Hombre {nombre: 'Alejandro'}), (primo1:Hombre {nombre: 'Fulano'})
 CREATE (hijo)-[:PRIMO_DE]->(primo1);
