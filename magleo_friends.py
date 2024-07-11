@@ -8,7 +8,7 @@ database = "arbolgenealogico"  # Nombre de la base de datos (puede cambiar segú
 
 # Consulta Cypher para obtener los amigos de Magleo
 query = """
-    MATCH (m:Hombre {nombre: 'Magleo'})-[:AMIGO_DE]-(amigo)
+    MATCH (hijo:Hombre {nombre: 'Magleo'})-[:amigo_de]-(amigo)
     RETURN amigo.nombre AS Nombre_del_amigo, amigo.edad AS Edad_del_amigo, amigo.actividad AS Actividad_del_amigo
 """
 

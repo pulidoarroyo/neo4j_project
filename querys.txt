@@ -1,6 +1,9 @@
-//CREAR AMIGO_DE MAGLEO A ALEJANDRO
+//Relaciones de amistad ida y vuelta
+MATCH (a:Hombre {nombre: 'Alejandro'}), (b:Hombre {nombre: 'Magleo'})
+CREATE (a)-[:amigo_de {fecha_ini: '2021-10-10'}]->(b);
+
 MATCH (a:Hombre {nombre: 'Magleo'}), (b:Hombre {nombre: 'Alejandro'})
-CREATE (a)-[:AMIGO_DE]->(b)
+CREATE (a)-[:amigo_de {fecha_ini: '2021-10-10'}]->(b);
 
 //RETORNA LOS PRIMOS DEL AMIGO DE MAGLEO
 MATCH (hijo:Hombre {nombre: 'Magleo'})-[:AMIGO_DE]->(amigo)-[:PRIMO_DE]->(primo)
